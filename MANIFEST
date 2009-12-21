@@ -1,0 +1,7 @@
+CHANGES
+MANIFEST
+README
+Rakefile
+rack-auth-cheat.gemspec
+lib/rack/auth/cheat.rb
+test/test_rack_auth_cheat.rb

@@ -1,0 +1,38 @@
+= Description
+Rack middleware that authenticates requests with matching username and password
+
+= Prerequisites
+rack 1.0.0 or later
+
+= Usage
+use "Rack::Auth::Cheat", "user_field", "password_field"
+
+= Default Fields
+The default user field is "username".
+The default password field is "password".
+
+= Details
+The rack-auth-cheat library provides a Rack middleware interface which authenticates
+any request with a matching username and password. This is useful in development
+environments, especially as a way to stub out an external authentication system. Be
+sure to include this from an environment-specific file such as
+config/environments/development.rb rather than from a global configuration file such
+as config/environment.rb
+
+The call method we've defined first checks to see if the AUTH_USER
+environment variable is set. If it is, we assume that the user has
+already been authenticated and move on.
+
+If AUTH_USER is not set, and AUTH_FAIL is not set, we then check whether
+the username and password match (the "Cheat" authentication method). If
+they match, AUTH_USER is set to the username.
+
+If they don't match then the request is passed on without modification.
+AUTH_FAIL will not be set by this class.
+
+It up to the application to check for the presence of AUTH_USER and/or
+AUTH_FAIL and act as necessary.
+
+= Authors
+Daniel Berger
+Charlie O'Keefe
